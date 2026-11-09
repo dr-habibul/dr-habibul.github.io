@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Alex Mercer - Academic Profile</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            700: '#102a43',
+                            800: '#0b69a3',
+                            900: '#061b2e',
+                        },
+                        slate: {
+                            600: '#486581',
+                            700: '#334e68',
+                            800: '#243b53',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .tab-btn.active {
+            border-bottom-color: #0b69a3;
+            color: #0b69a3;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-navy-700 selection:text-white">
+
+    <!-- Mobile Header Navigation -->
+    <header class="lg:hidden fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md border-b border-slate-200 z-50 px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <span class="font-bold text-navy-900 text-lg tracking-tight">Dr. Alex Mercer</span>
+        </div>
+        <button id="mobile-menu-btn" class="p-2 text-slate-600 hover:text-navy-900 focus:outline-none" aria-label="Toggle menu">
+            <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40 lg:hidden">
+        <div class="bg-white w-3/4 max-w-sm h-full p-6 flex flex-col justify-between shadow-2xl">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                    <span class="font-bold text-navy-900 text-lg">Navigation</span>
+                    <button id="close-menu-btn" class="text-slate-400 hover:text-slate-600">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+                <nav class="flex flex-col space-y-3 font-medium text-slate-700">
+                    <a href="#about" class="mobile-nav-link hover:text-navy-800 py-1 transition-colors">About Me</a>
+                    <a href="#education" class="mobile-nav-link hover:text-navy-800 py-1 transition-colors">Education</a>
+                    <a href="#research" class="mobile-nav-link hover:text-navy-800 py-1 transition-colors">Research Interests</a>
+                    <a href="#publications" class="mobile-nav-link hover:text-navy-800 py-1 transition-colors">Publications</a>
+                    <a href="#teaching" class="mobile-nav-link hover:text-navy-800 py-1 transition-colors">Teaching</a>
+                    <a href="#students" class="mobile-nav-link hover:text-navy-800 py-1 transition-colors">Students & Advisees</a>
+                    <a href="#contact" class="mobile-nav-link hover:text-navy-800 py-1 transition-colors">Contact</a>
+                </nav>
+            </div>
+            <div class="border-t border-slate-100 pt-4 flex space-x-4 text-slate-600">
+                <a href="mailto:alex.mercer@university.edu" class="hover:text-navy-800"><i class="fa-solid fa-envelope text-lg"></i></a>
+                <a href="https://scholar.google.com" target="_blank" class="hover:text-navy-800"><i class="fa-solid fa-graduation-cap text-lg"></i></a>
+                <a href="https://github.com" target="_blank" class="hover:text-navy-800"><i class="fa-brands fa-github text-lg"></i></a>
+                <a href="https://linkedin.com" target="_blank" class="hover:text-navy-800"><i class="fa-brands fa-linkedin text-lg"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 lg:pt-0">
+        <div class="lg:flex lg:gap-12">
+
+            <!-- Left Sidebar Navigation (Desktop) -->
+            <aside class="hidden lg:block w-72 shrink-0 py-12 h-screen sticky top-0 flex flex-col justify-between border-r border-slate-200 pr-8">
+                <div>
+                    <!-- Avatar & Profile Header -->
+                    <div class="text-left mb-8">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300" 
+                             alt="Dr. Alex Mercer" 
+                             class="w-28 h-28 rounded-full border-2 border-navy-700/20 shadow-md object-cover mb-4">
+                        <h1 class="text-2xl font-bold text-navy-900 tracking-tight">Dr. Alex Mercer</h1>
+                        <p class="text-sm font-semibold text-navy-800 mt-1">Associate Professor</p>
+                        <p class="text-xs text-slate-500 mt-0.5">Department of Mathematics & Computer Science</p>
+                        <p class="text-xs text-slate-500">Stanford University</p>
+                    </div>
+
+                    <!-- Navigation Links -->
+                    <nav class="space-y-1 font-medium text-sm text-slate-600">
+                        <a href="#about" class="sidebar-link flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-navy-900 transition-colors active-link">
+                            <i class="fa-solid fa-user w-5 text-center text-slate-400"></i>
+                            <span>About Me</span>
+                        </a>
+                        <a href="#education" class="sidebar-link flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-navy-900 transition-colors">
+                            <i class="fa-solid fa-graduation-cap w-5 text-center text-slate-400"></i>
+                            <span>Education</span>
+                        </a>
+                        <a href="#research" class="sidebar-link flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-navy-900 transition-colors">
+                            <i class="fa-solid fa-atom w-5 text-center text-slate-400"></i>
+                            <span>Research</span>
+                        </a>
+                        <a href="#publications" class="sidebar-link flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-navy-900 transition-colors">
+                            <i class="fa-solid fa-book-open w-5 text-center text-slate-400"></i>
+                            <span>Publications</span>
+                        </a>
+                        <a href="#teaching" class="sidebar-link flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-navy-900 transition-colors">
+                            <i class="fa-solid fa-chalkboard-user w-5 text-center text-slate-400"></i>
+                            <span>Teaching</span>
+                        </a>
+                        <a href="#students" class="sidebar-link flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-navy-900 transition-colors">
+                            <i class="fa-solid fa-users w-5 text-center text-slate-400"></i>
+                            <span>Students</span>
+                        </a>
+                        <a href="#contact" class="sidebar-link flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-navy-900 transition-colors">
+                            <i class="fa-solid fa-envelope w-5 text-center text-slate-400"></i>
+                            <span>Contact & Office</span>
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Footer External Quick Links -->
+                <div class="pt-6 border-t border-slate-200">
+                    <div class="flex items-center space-x-4 text-slate-500">
+                        <a href="mailto:alex.mercer@stanford.edu" title="Email" class="hover:text-navy-800 transition-colors"><i class="fa-solid fa-envelope text-lg"></i></a>
+                        <a href="https://scholar.google.com" target="_blank" title="Google Scholar" class="hover:text-navy-800 transition-colors"><i class="fa-solid fa-graduation-cap text-lg"></i></a>
+                        <a href="https://github.com" target="_blank" title="GitHub" class="hover:text-navy-800 transition-colors"><i class="fa-brands fa-github text-lg"></i></a>
+                        <a href="https://orcid.org" target="_blank" title="ORCID" class="hover:text-navy-800 transition-colors"><i class="fa-brands fa-orcid text-lg"></i></a>
+                        <a href="https://arxiv.org" target="_blank" title="arXiv" class="hover:text-navy-800 transition-colors"><i class="fa-solid fa-file-lines text-lg"></i></a>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-4">&copy; 2026 Dr. Alex Mercer</p>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="flex-1 py-8 lg:py-12 space-y-16">
+
+                <!-- HERO / ABOUT ME SECTION -->
+                <section id="about" class="scroll-mt-20">
+                    <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200/80">
+                        <!-- Mobile Header Profile Brief (visible only on small screens) -->
+                        <div class="flex items-center space-x-4 mb-6 lg:hidden border-b border-slate-100 pb-4">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300" 
+                                 alt="Dr. Alex Mercer" 
+                                 class="w-20 h-20 rounded-full border border-slate-300 object-cover">
+                            <div>
+                                <h1 class="text-xl font-bold text-navy-900">Dr. Alex Mercer</h1>
+                                <p class="text-xs font-semibold text-navy-800">Associate Professor</p>
+                                <p class="text-xs text-slate-500">Stanford University</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-navy-50 text-navy-800 border border-navy-100">
+                                <i class="fa-solid fa-circle text-[8px] mr-2 text-emerald-500"></i> Accepting PhD Students for Fall 2027
+                            </span>
+                            <div class="flex items-center space-x-3 text-sm">
+                                <a href="#contact" class="inline-flex items-center space-x-1 text-slate-600 hover:text-navy-800 transition-colors">
+                                    <i class="fa-solid fa-location-dot text-slate-400"></i>
+                                    <span>Building 380, Room 382M</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <h2 class="text-3xl font-bold text-navy-900 mb-4 tracking-tight">Biography</h2>
+                        <div class="prose prose-slate max-w-none text-slate-600 leading-relaxed space-y-4">
+                            <p>
+                                I am an Associate Professor in the Department of Mathematics & Computer Science at Stanford University. Prior to joining Stanford, I was a Postdoctoral Researcher at MIT CSAIL. I received my PhD in Applied Mathematics from Caltech under the supervision of Prof. Jane Doe.
+                            </p>
+                            <p>
+                                My primary research lies at the intersection of <strong>Algebraic Coding Theory</strong>, <strong>Quantum Information Science</strong>, and <strong>Theoretical Computer Science</strong>. I am particularly interested in constructing fault-tolerant quantum error-correcting codes, exploring algebraic-geometric code structures, and designing efficient decoding algorithms for post-quantum cryptography applications.
+                            </p>
+                        </div>
+
+                        <!-- Quick Badges / Links -->
+                        <div class="mt-8 pt-6 border-t border-slate-100 flex flex-wrap gap-3">
+                            <a href="#" class="inline-flex items-center space-x-2 px-4 py-2 bg-navy-700 hover:bg-navy-900 text-white text-xs font-medium rounded-lg transition-colors shadow-sm">
+                                <i class="fa-solid fa-file-pdf"></i>
+                                <span>Download CV (PDF)</span>
+                            </a>
+                            <a href="https://scholar.google.com" target="_blank" class="inline-flex items-center space-x-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium rounded-lg transition-colors">
+                                <i class="fa-solid fa-graduation-cap text-navy-800"></i>
+                                <span>Google Scholar Profile</span>
+                            </a>
+                            <a href="https://arxiv.org" target="_blank" class="inline-flex items-center space-x-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium rounded-lg transition-colors">
+                                <i class="fa-solid fa-book"></i>
+                                <span>arXiv Preprints</span>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- EDUCATION SECTION -->
+                <section id="education" class="scroll-mt-20">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="p-2 bg-navy-50 rounded-lg text-navy-800">
+                            <i class="fa-solid fa-graduation-cap text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-navy-900">Education</h2>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Timeline Item 1 -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200/80 shadow-sm relative pl-6 sm:pl-8">
+                            <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-navy-700 rounded-l-xl"></div>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                                <h3 class="text-lg font-bold text-slate-800">Ph.D. in Applied Mathematics</h3>
+                                <span class="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full w-fit">2014 – 2019</span>
+                            </div>
+                            <p class="text-sm font-medium text-navy-800">California Institute of Technology (Caltech)</p>
+                            <p class="text-sm text-slate-600 mt-2"><strong>Dissertation:</strong> <em>Algebraic Methods in Low-Density Parity-Check Quantum Codes</em></p>
+                            <p class="text-xs text-slate-500 mt-1">Advisor: Prof. Jane Doe | Nominated for Best Dissertation Award</p>
+                        </div>
+
+                        <!-- Timeline Item 2 -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200/80 shadow-sm relative pl-6 sm:pl-8">
+                            <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-slate-400 rounded-l-xl"></div>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                                <h3 class="text-lg font-bold text-slate-800">M.S. in Mathematics</h3>
+                                <span class="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full w-fit">2012 – 2014</span>
+                            </div>
+                            <p class="text-sm font-medium text-navy-800">University of Cambridge</p>
+                            <p class="text-sm text-slate-600 mt-2">Master of Advanced Study (Tripos Part III) with Distinction</p>
+                        </div>
+
+                        <!-- Timeline Item 3 -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200/80 shadow-sm relative pl-6 sm:pl-8">
+                            <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-slate-300 rounded-l-xl"></div>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                                <h3 class="text-lg font-bold text-slate-800">B.S. in Mathematics & Computer Science</h3>
+                                <span class="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full w-fit">2008 – 2012</span>
+                            </div>
+                            <p class="text-sm font-medium text-navy-800">UC Berkeley</p>
+                            <p class="text-sm text-slate-600 mt-2">Summa Cum Laude, Departmental Honors</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- RESEARCH INTERESTS SECTION -->
+                <section id="research" class="scroll-mt-20">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="p-2 bg-navy-50 rounded-lg text-navy-800">
+                            <i class="fa-solid fa-atom text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-navy-900">Research Interests</h2>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Card 1 -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-10 h-10 rounded-lg bg-blue-50 text-navy-800 flex items-center justify-center mb-4">
+                                <i class="fa-solid fa-key text-lg"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-800 mb-2">Algebraic Coding Theory</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Construction of algebraic-geometric codes, evaluation codes over finite fields, and list decoding algorithms with applications to modern communication networks.
+                            </p>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center mb-4">
+                                <i class="fa-solid fa-microchip text-lg"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-800 mb-2">Quantum Error Correction</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Designing fault-tolerant surface codes, subsystem codes, and asymptotic quantum LDPC architectures for scalable fault-tolerant quantum computers.
+                            </p>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center mb-4">
+                                <i class="fa-solid fa-shield-halved text-lg"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-800 mb-2">Post-Quantum Cryptography</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Security analysis of code-based public key cryptosystems (McEliece variants), rank metric codes, and lattice-based cryptographic primitives.
+                            </p>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-10 h-10 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center mb-4">
+                                <i class="fa-solid fa-network-wired text-lg"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-800 mb-2">Combinatorial Optimization</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Graph-theoretic approaches to decoding algorithms, belief propagation bounds, and spectral graph theory applications in coding bounds.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- PUBLICATIONS SECTION -->
+                <section id="publications" class="scroll-mt-20">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2 bg-navy-50 rounded-lg text-navy-800">
+                                <i class="fa-solid fa-book-open text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold text-navy-900">Publications</h2>
+                        </div>
+
+                        <!-- Category Filters -->
+                        <div class="flex flex-wrap gap-2 text-xs font-medium" id="publication-filters">
+                            <button data-filter="all" class="pub-filter-btn px-3 py-1.5 rounded-lg bg-navy-700 text-white font-semibold transition-colors">All</button>
+                            <button data-filter="journal" class="pub-filter-btn px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 transition-colors">Journals</button>
+                            <button data-filter="conference" class="pub-filter-btn px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 transition-colors">Conferences</button>
+                            <button data-filter="preprint" class="pub-filter-btn px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 transition-colors">Preprints</button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4" id="publications-container">
+                        <!-- Publication 1 -->
+                        <div class="pub-item bg-white p-6 rounded-xl border border-slate-200/80 shadow-sm transition-all" data-category="journal">
+                            <div class="flex items-start justify-between gap-4">
+                                <div>
+                                    <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 mb-2">IEEE TIT 2025</span>
+                                    <h3 class="text-base font-bold text-navy-900 leading-snug">Asymptotically Good Quantum LDPC Codes over Finite Fields</h3>
+                                    <p class="text-xs text-slate-600 mt-1">
+                                        <strong class="text-slate-900">A. Mercer</strong>, E. Smith, and R. Johnson
+                                    </p>
+                                    <p class="text-xs italic text-slate-500 mt-1">IEEE Transactions on Information Theory, vol. 71, no. 4, pp. 2410-2428, 2025.</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap items-center gap-3 text-xs">
+                                <a href="#" class="inline-flex items-center space-x-1 text-navy-800 font-semibold hover:underline">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                    <span>PDF</span>
+                                </a>
+                                <a href="https://doi.org" target="_blank" class="inline-flex items-center space-x-1 text-slate-500 hover:text-navy-800">
+                                    <i class="fa-solid fa-link"></i>
+                                    <span>DOI</span>
+                                </a>
+                                <button onclick="toggleBibtex('bib1')" class="inline-flex items-center space-x-1 text-slate-500 hover:text-navy-800">
+                                    <i class="fa-solid fa-quote-right"></i>
+                                    <span>BibTeX</span>
+                                </button>
+                            </div>
+                            <!-- BibTeX Toggle Box -->
+                            <div id="bib1" class="hidden mt-4 p-3 bg-slate-900 text-slate-200 rounded-lg text-xs font-mono relative">
+                                <button onclick="copyBibtex('bib1-text')" class="absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-200 rounded text-[10px] transition-colors">
+                                    <i class="fa-solid fa-copy mr-1"></i> Copy
+                                </button>
+                                <pre id="bib1-text" class="whitespace-pre-wrap overflow-x-auto">@article{mercer2025asymptotically,
+  title={Asymptotically Good Quantum LDPC Codes over Finite Fields},
+  author={Mercer, Alex and Smith, Ellen and Johnson, Robert},
+  journal={IEEE Transactions on Information Theory},
+  volume={71},
+  number={4},
+  pages={2410--2428},
+  year={2025},
+  publisher={IEEE}
+}</pre>
+                            </div>
+                        </div>
+
+                        <!-- Publication 2 -->
+                        <div class="pub-item bg-white p-6 rounded-xl border border-slate-200/80 shadow-sm transition-all" data-category="conference">
+                            <div class="flex items-start justify-between gap-4">
+                                <div>
+                                    <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-semibold bg-blue-50 text-navy-800 border border-blue-200 mb-2">STOC 2024</span>
+                                    <h3 class="text-base font-bold text-navy-900 leading-snug">Linear-Time List Decoding of Algebraic-Geometric Codes beyond the Johnson Bound</h3>
+                                    <p class="text-xs text-slate-600 mt-1">
+                                        <strong class="text-slate-900">A. Mercer</strong> and H. Davis
+                                    </p>
+                                    <p class="text-xs italic text-slate-500 mt-1">Proceedings of the 56th Annual ACM Symposium on Theory of Computing (STOC), 2024.</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap items-center gap-3 text-xs">
+                                <a href="#" class="inline-flex items-center space-x-1 text-navy-800 font-semibold hover:underline">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                    <span>PDF</span>
+                                </a>
+                                <a href="https://arxiv.org" target="_blank" class="inline-flex items-center space-x-1 text-slate-500 hover:text-navy-800">
+                                    <i class="fa-solid fa-globe"></i>
+                                    <span>arXiv</span>
+                                </a>
+                                <button onclick="toggleBibtex('bib2')" class="inline-flex items-center space-x-1 text-slate-500 hover:text-navy-800">
+                                    <i class="fa-solid fa-quote-right"></i>
+                                    <span>BibTeX</span>
+                                </button>
+                            </div>
+                            <!-- BibTeX Toggle Box -->
+                            <div id="bib2" class="hidden mt-4 p-3 bg-slate-900 text-slate-200 rounded-lg text-xs font-mono relative">
+                                <button onclick="copyBibtex('bib2-text')" class="absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-200 rounded text-[10px] transition-colors">
+                                    <i class="fa-solid fa-copy mr-1"></i> Copy
+                                </button>
+                                <pre id="bib2-text" class="whitespace-pre-wrap overflow-x-auto">@inproceedings{mercer2024linear,
+  title={Linear-Time List Decoding of Algebraic-Geometric Codes beyond the Johnson Bound},
+  author={Mercer, Alex and Davis, Howard},
+  booktitle={Proceedings of the 56th Annual ACM Symposium on Theory of Computing},
+  pages={112--125},
+  year={2024}
+}</pre>
+                            </div>
+                        </div>
+
+                        <!-- Publication 3 -->
+                        <div class="pub-item bg-white p-6 rounded-xl border border-slate-200/80 shadow-sm transition-all" data-category="preprint">
+                            <div class="flex items-start justify-between gap-4">
+                                <div>
+                                    <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-semibold bg-amber-50 text-amber-800 border border-amber-200 mb-2">Preprint 2026</span>
+                                    <h3 class="text-base font-bold text-navy-900 leading-snug">Fault-Tolerant Logical Qubit Architectures on Non-Euclidean Surfaces</h3>
+                                    <p class="text-xs text-slate-600 mt-1">
+                                        L. Zhang, <strong class="text-slate-900">A. Mercer</strong>, and C. Vance
+                                    </p>
+                                    <p class="text-xs italic text-slate-500 mt-1">arXiv:2601.08921 [quant-ph], Submitted to Physical Review X.</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap items-center gap-3 text-xs">
+                                <a href="#" class="inline-flex items-center space-x-1 text-navy-800 font-semibold hover:underline">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                    <span>PDF</span>
+                                </a>
+                                <a href="https://arxiv.org" target="_blank" class="inline-flex items-center space-x-1 text-slate-500 hover:text-navy-800">
+                                    <i class="fa-solid fa-globe"></i>
+                                    <span>arXiv:2601.08921</span>
+                                </a>
+                                <button onclick="toggleBibtex('bib3')" class="inline-flex items-center space-x-1 text-slate-500 hover:text-navy-800">
+                                    <i class="fa-solid fa-quote-right"></i>
+                                    <span>BibTeX</span>
+                                </button>
+                            </div>
+                            <!-- BibTeX Toggle Box -->
+                            <div id="bib3" class="hidden mt-4 p-3 bg-slate-900 text-slate-200 rounded-lg text-xs font-mono relative">
+                                <button onclick="copyBibtex('bib3-text')" class="absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-200 rounded text-[10px] transition-colors">
+                                    <i class="fa-solid fa-copy mr-1"></i> Copy
+                                </button>
+                                <pre id="bib3-text" class="whitespace-pre-wrap overflow-x-auto">@article{zhang2026fault,
+  title={Fault-Tolerant Logical Qubit Architectures on Non-Euclidean Surfaces},
+  author={Zhang, Lucas and Mercer, Alex and Vance, Clara},
+  journal={arXiv preprint arXiv:2601.08921},
+  year={2026}
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TEACHING SECTION -->
+                <section id="teaching" class="scroll-mt-20">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="p-2 bg-navy-50 rounded-lg text-navy-800">
+                            <i class="fa-solid fa-chalkboard-user text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-navy-900">Teaching</h2>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Course 1 -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200/80 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-xs font-bold px-2 py-0.5 bg-navy-700 text-white rounded">CS 254 / MATH 230</span>
+                                    <span class="text-xs text-slate-500 font-medium">Spring 2026</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-navy-900 mt-2">Quantum Information & Error Correction</h3>
+                                <p class="text-xs text-slate-600 mt-1">Graduate-level course on quantum channels, stabilizer codes, and fault-tolerance bounds.</p>
+                            </div>
+                            <div class="flex items-center space-x-3 text-xs shrink-0">
+                                <a href="#" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-medium transition-colors">
+                                    <i class="fa-solid fa-book-bookmark mr-1"></i> Syllabus
+                                </a>
+                                <a href="#" class="px-3 py-1.5 bg-navy-50 hover:bg-navy-100 text-navy-800 rounded-lg font-medium transition-colors">
+                                    <i class="fa-solid fa-folder-open mr-1"></i> Lecture Notes
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Course 2 -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200/80 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-xs font-bold px-2 py-0.5 bg-navy-700 text-white rounded">MATH 115</span>
+                                    <span class="text-xs text-slate-500 font-medium">Autumn 2025</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-navy-900 mt-2">Introduction to Algebraic Coding Theory</h3>
+                                <p class="text-xs text-slate-600 mt-1">Undergraduate course covering finite fields, Hamming codes, Reed-Solomon codes, and decoding techniques.</p>
+                            </div>
+                            <div class="flex items-center space-x-3 text-xs shrink-0">
+                                <a href="#" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-medium transition-colors">
+                                    <i class="fa-solid fa-book-bookmark mr-1"></i> Syllabus
+                                </a>
+                                <a href="#" class="px-3 py-1.5 bg-navy-50 hover:bg-navy-100 text-navy-800 rounded-lg font-medium transition-colors">
+                                    <i class="fa-solid fa-folder-open mr-1"></i> Lecture Notes
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- STUDENTS & ADVISEES SECTION -->
+                <section id="students" class="scroll-mt-20">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="p-2 bg-navy-50 rounded-lg text-navy-800">
+                            <i class="fa-solid fa-users text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-navy-900">Students & Advisees</h2>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- PhD Students -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200/80 shadow-sm">
+                            <h3 class="text-lg font-bold text-navy-900 border-b border-slate-100 pb-3 mb-4 flex items-center justify-between">
+                                <span>Ph.D. Students</span>
+                                <span class="text-xs px-2 py-0.5 bg-navy-50 text-navy-800 rounded-full">Current</span>
+                            </h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 text-xs shrink-0">LZ</div>
+                                    <div>
+                                        <p class="text-sm font-bold text-slate-800">Lucas Zhang</p>
+                                        <p class="text-xs text-slate-500">Topic: Non-Abelian Anyons & Topological Codes</p>
+                                        <p class="text-[11px] text-navy-800">Expected Graduation: 2027</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 text-xs shrink-0">KR</div>
+                                    <div>
+                                        <p class="text-sm font-bold text-slate-800">Kavita Rao</p>
+                                        <p class="text-xs text-slate-500">Topic: Quantum Decoding via Belief Propagation</p>
+                                        <p class="text-[11px] text-navy-800">Expected Graduation: 2028</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Master's / Undergraduate Students -->
+                        <div class="bg-white p-6 rounded-xl border border-slate-200/80 shadow-sm">
+                            <h3 class="text-lg font-bold text-navy-900 border-b border-slate-100 pb-3 mb-4 flex items-center justify-between">
+                                <span>Master's & Thesis Advisees</span>
+                                <span class="text-xs px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full">Current & Alumni</span>
+                            </h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 text-xs shrink-0">CV</div>
+                                    <div>
+                                        <p class="text-sm font-bold text-slate-800">Clara Vance (M.S.)</p>
+                                        <p class="text-xs text-slate-500">Thesis: Asymptotic Bounds for Rank Metric Codes</p>
+                                        <p class="text-[11px] text-emerald-600 font-medium">Now: PhD student at MIT</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 text-xs shrink-0">DM</div>
+                                    <div>
+                                        <p class="text-sm font-bold text-slate-800">David Miller (B.S. Senior Thesis)</p>
+                                        <p class="text-xs text-slate-500">Project: Hardware Implementation of Reed-Solomon Decoders</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CONTACT & OFFICE HOURS SECTION -->
+                <section id="contact" class="scroll-mt-20">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="p-2 bg-navy-50 rounded-lg text-navy-800">
+                            <i class="fa-solid fa-envelope text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-navy-900">Contact & Office Hours</h2>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-lg font-bold text-navy-900 mb-4">Contact Information</h3>
+                            <div class="space-y-3 text-sm text-slate-600">
+                                <div class="flex items-start space-x-3">
+                                    <i class="fa-solid fa-building text-slate-400 mt-1"></i>
+                                    <div>
+                                        <strong class="text-slate-800">Office:</strong><br>
+                                        Building 380, Room 382M<br>
+                                        450 Jane Stanford Way<br>
+                                        Stanford, CA 94305
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <i class="fa-solid fa-envelope text-slate-400"></i>
+                                    <div>
+                                        <strong class="text-slate-800">Email:</strong>
+                                        <a href="mailto:alex.mercer@stanford.edu" class="text-navy-800 hover:underline ml-1">alex.mercer@stanford.edu</a>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <i class="fa-solid fa-phone text-slate-400"></i>
+                                    <div>
+                                        <strong class="text-slate-800">Phone:</strong> +1 (650) 723-2300
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-lg font-bold text-navy-900 mb-4">Office Hours</h3>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/60 space-y-3 text-xs">
+                                <div class="flex justify-between items-center border-b border-slate-200/60 pb-2">
+                                    <span class="font-bold text-slate-700">Tuesdays</span>
+                                    <span class="text-navy-800 font-semibold">2:00 PM – 4:00 PM</span>
+                                </div>
+                                <div class="flex justify-between items-center border-b border-slate-200/60 pb-2">
+                                    <span class="font-bold text-slate-700">Thursdays</span>
+                                    <span class="text-navy-800 font-semibold">10:00 AM – 11:30 AM</span>
+                                </div>
+                                <p class="text-slate-500 pt-1 italic">
+                                    * Office hours are held in-person or via Zoom by appointment. Students enrolled in my courses can drop in directly.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Notification Toast for BibTeX Copy -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-navy-900 text-white text-xs px-4 py-3 rounded-lg shadow-xl translate-y-20 opacity-0 transition-all duration-300 flex items-center space-x-2 z-50">
+        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span>BibTeX copied to clipboard!</span>
+    </div>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // Toggle mobile menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
+        closeMenuBtn.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Toggle BibTeX visibility
+        function toggleBibtex(id) {
+            const el = document.getElementById(id);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        }
+
+        // Copy BibTeX content to clipboard
+        function copyBibtex(elementId) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            
+            // Safe copy fallback
+            const textarea = document.createElement('textarea');
+            textarea.value = textToCopy;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            // Show Toast Notification
+            const toast = document.getElementById('toast');
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2500);
+        }
+
+        // Filter Publications
+        const filterBtns = document.querySelectorAll('.pub-filter-btn');
+        const pubItems = document.querySelectorAll('.pub-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-navy-700', 'text-white', 'font-semibold');
+                    b.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+                });
+                btn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+                btn.classList.add('bg-navy-700', 'text-white', 'font-semibold');
+
+                const filter = btn.getAttribute('data-filter');
+
+                pubItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Highlight Active Sidebar Link on Scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.sidebar-link');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 120) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('bg-slate-100', 'text-navy-900', 'font-semibold');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('bg-slate-100', 'text-navy-900', 'font-semibold');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
